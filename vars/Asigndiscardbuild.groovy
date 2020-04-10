@@ -2,7 +2,7 @@ package com.cloudbees
 
 import jenkins.model.Jenkins
 
-def asignDiscardBuildToAllJobs(){
+def call(){
     Jenkins.instanceOrNull.allItems(hudson.model.Job).each { job ->
         if (job.isBuildable() && job.supportsLogRotator() && job.getProperty(jenkins.model.BuildDiscarderProperty) == null) {
             println "Processing \"${job.fullDisplayName}\""
