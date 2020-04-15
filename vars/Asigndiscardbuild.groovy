@@ -2,12 +2,14 @@ package com.cloudbees
 
 import jenkins.model.Jenkins
 
+@Mixin(Config)
 class AsignDiscargBuildUtil implements Serializable{
+    
     def steps
     
     AsignDiscargBuildUtil(steps) {this.steps = steps}
     
-    def settingDiscardBuilds(){
+    def call(){
         Jenkins.instanceOrNull.allItems(hudson.model.Job).each { job ->
             if (job.isBuildable() && job.supportsLogRotator() && job.getProperty(jenkins.model.BuildDiscarderProperty) == null) {
                 steps.println "Processing \"${job.fullDisplayName}\""
