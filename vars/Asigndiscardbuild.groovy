@@ -6,9 +6,9 @@ def call(){
     sh """echo "Starting" """
     Jenkins.instanceOrNull.allItems(hudson.model.Job).each { job ->
         if (job.isBuildable() && job.supportsLogRotator()) {
-            test = '\033[0;31m'
+            RED='\033[0;31m'
             sh """echo "step1" """
-            sh """echo "Processing ${test}" """
+            sh """echo "Processing ${RED}" """
             // adding a property implicitly saves so no explicit one
             try {
                 job.setBuildDiscarder(new hudson.tasks.LogRotator ( 11, 11, 11, 11))
