@@ -4,7 +4,7 @@ import jenkins.model.Jenkins
 
 def call(){
     Jenkins.instanceOrNull.allItems(hudson.model.Job).each { job ->
-        if (job.isBuildable() && job.supportsLogRotator() && job.getProperty(jenkins.model.BuildDiscarderProperty) == null) {
+        if (job.isBuildable() && job.supportsLogRotator()) {
             sh 'echo "Processing \"${job.fullDisplayName}\""'
                 // adding a property implicitly saves so no explicit one
                 try {
