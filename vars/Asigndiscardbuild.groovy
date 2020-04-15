@@ -7,6 +7,7 @@ def call(){
     Jenkins.instanceOrNull.allItems(hudson.model.Job).each { job ->
         if (job.isBuildable() && job.supportsLogRotator()) {
             fullDisplayName = job.fullDisplayName.toString()
+            sh """echo "step1" """
             sh """echo "Processing ${fullDisplayName}" """
                 // adding a property implicitly saves so no explicit one
                 try {
