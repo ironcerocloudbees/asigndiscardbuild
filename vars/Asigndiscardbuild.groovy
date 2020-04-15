@@ -12,7 +12,7 @@ def call(){
                     sh 'echo "${job.fullName} is updated"'
                 } catch (Exception e) {
                     // Some implementation like for example the hudson.matrix.MatrixConfiguration supports a LogRotator but not setting it
-                    steps.println "[WARNING] Failed to update ${job.fullName} of type ${job.class} : ${e}"
+                    sh 'echo "[WARNING] Failed to update ${job.fullName} of type ${job.class} : ${e}"'
                 }
 
         }
