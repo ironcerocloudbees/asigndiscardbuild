@@ -8,7 +8,7 @@ def call(){
         if (job.isBuildable() && job.supportsLogRotator()) {
             
            
-            echo "Processing"
+            echo "Processing ${job.fullDisplayName}"
             // adding a property implicitly saves so no explicit one
             try {
                 job.setBuildDiscarder(new hudson.tasks.LogRotator ( 11, 11, 11, 11))
