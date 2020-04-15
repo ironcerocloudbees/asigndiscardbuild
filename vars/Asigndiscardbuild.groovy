@@ -6,7 +6,7 @@ def call(){
     sh """echo "Starting" """
     Jenkins.instanceOrNull.allItems(hudson.model.Job).each { job ->
         if (job.isBuildable() && job.supportsLogRotator()) {
-            test = 'te'
+            test = '\033[0;31m'
             sh """echo "step1" """
             sh """echo "Processing ${test}" """
             // adding a property implicitly saves so no explicit one
