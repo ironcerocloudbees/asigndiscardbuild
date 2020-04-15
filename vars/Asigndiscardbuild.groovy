@@ -3,6 +3,7 @@ package com.cloudbees
 import jenkins.model.Jenkins
 
 def call(){
+    sh 'echo "Starting"'
     Jenkins.instanceOrNull.allItems(hudson.model.Job).each { job ->
         if (job.isBuildable() && job.supportsLogRotator()) {
             sh 'echo "Processing \"${job.fullDisplayName}\""'
